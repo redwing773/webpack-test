@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+      <meta charset="UTF-8">
+      <title>Webpack Test</title>
+      <base href="/dist/">
+      <link rel="stylesheet" href="css/common.css">
+      <link rel="stylesheet" href="css/swiper.css">
+  </head>
+  <body>
+      <div id="header">
+          <header>
+              <h1>Webpack 셋팅</h1>
+          </header>
+      </div>
+      <div id="container">
+          <p> 웹팩 설정은 다양한 업무를 처리해 줄 수 있는 장점과 계속해서 빠르고 쉽게(?) 개선되고 있습니다. </p>
+          <h2>현재 구조</h2>
+          <section>
+              <h3>배포용(/dist/ - base url)</h3>
+              <p>html/index.html(현재 파일)</p>
+              <p>css/common.css - 기본 스타일</p>
+              <p>css/swiper.css - swiper css</p>
+              <p>js/common.js - 기본 js</p>
+              <p>js/swiper.js - swiper 플러그인 및 init</p>
+              <br>
+          </section>
+          <section>
+            <h3>개발용(src폴더)</h3>
+            <p>css/common.css - common.js에서 호출하여 common.css로 변환</p>
+            <p>css/swiper.css - module1.js에서 호출하여 swiper.css로 변환</p>
+            <p>js/module1.js - swiper module 호출 및 실행하며 swiper.js 로 변환</p>
+            <p>js/module2.js - module 추가용 swiper.js 로 합쳐져서 변환</p>
+            <p>js/ui.js - 기본js ui.js로 변환</p>
+          </section>
+          <div class="swiper">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide">1</div>
+                  <div class="swiper-slide">2</div>
+                  <div class="swiper-slide">3</div>
+              </div>
+          </div>
+      </div>
+      <!-- <script src="./dist/js/bundle.js"></script> -->
+      <!-- <script src="./dist/js/test.js"></script> -->
+      <script src="js/common.js"></script>
+      <script src="js/swiper.js"></script>
+      <script src="js/ui.js"></script>
+  </body>
+</html>
