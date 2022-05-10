@@ -1,21 +1,25 @@
-/*!**********************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/common.css ***!
-  \**********************************************************************/
-/* common.css */
- 
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/common.scss ***!
+  \**************************************************************************************************************/
+/* common.scss */
 body {
-    color: blue;
- }
-p{
-   color: #222;
+  color: blue;
+}
+body p {
+  color: #222;
+}
+body #container > p {
+  color: red;
+}
+body .swiper {
+  margin-top: 30px;
+  border: 1px solid #000;
+  text-align: center;
 }
 
- #container > p {
-    color: red;
- }
-
- .swiper{
-    margin-top:30px;
-    border:1px solid #000;
-    text-align:center;
- }
+.imgs2_1 {
+  background-image: url(https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png);
+  background-position: 0px 0px;
+  width: 494px;
+  height: 658px;
+}

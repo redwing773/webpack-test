@@ -1,5 +1,7 @@
+@charset "utf-8";
 /* common.scss */
- 
+
+
 body {
     color: blue;
     p{
@@ -17,4 +19,8 @@ body {
 
  }
 
+// @import '../assets/spritesmith-generated/sprite1.scss';
+// .cont1_right1{@include sprite($cont1-right1);}
 
+@import '../assets/spritesmith-generated/sprite2.scss';
+.imgs2_1{@include sprite($imgs2-1);}

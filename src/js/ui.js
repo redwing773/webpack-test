@@ -8,4 +8,7 @@ import $ from 'jQuery';
     });
 })();
 
-console.log('ui.js swiper 입니다');
+console.log('ui.js 입니다');
+
+$('#header').load('/html/header.html #header');
+$('#footer').load('/html/footer.html #footer');

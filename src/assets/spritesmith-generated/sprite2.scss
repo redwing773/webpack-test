@@ -1,0 +1,123 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$imgs2-1-name: 'imgs2_1';
+$imgs2-1-x: 0px;
+$imgs2-1-y: 0px;
+$imgs2-1-offset-x: 0px;
+$imgs2-1-offset-y: 0px;
+$imgs2-1-width: 494px;
+$imgs2-1-height: 658px;
+$imgs2-1-total-width: 1482px;
+$imgs2-1-total-height: 1316px;
+$imgs2-1-image: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png';
+$imgs2-1: (0px, 0px, 0px, 0px, 494px, 658px, 1482px, 1316px, 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', 'imgs2_1', );
+$imgs2-2-name: 'imgs2_2';
+$imgs2-2-x: 494px;
+$imgs2-2-y: 0px;
+$imgs2-2-offset-x: -494px;
+$imgs2-2-offset-y: 0px;
+$imgs2-2-width: 494px;
+$imgs2-2-height: 658px;
+$imgs2-2-total-width: 1482px;
+$imgs2-2-total-height: 1316px;
+$imgs2-2-image: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png';
+$imgs2-2: (494px, 0px, -494px, 0px, 494px, 658px, 1482px, 1316px, 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', 'imgs2_2', );
+$imgs2-3-name: 'imgs2_3';
+$imgs2-3-x: 988px;
+$imgs2-3-y: 0px;
+$imgs2-3-offset-x: -988px;
+$imgs2-3-offset-y: 0px;
+$imgs2-3-width: 494px;
+$imgs2-3-height: 658px;
+$imgs2-3-total-width: 1482px;
+$imgs2-3-total-height: 1316px;
+$imgs2-3-image: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png';
+$imgs2-3: (988px, 0px, -988px, 0px, 494px, 658px, 1482px, 1316px, 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', 'imgs2_3', );
+$imgs2-4-name: 'imgs2_4';
+$imgs2-4-x: 0px;
+$imgs2-4-y: 658px;
+$imgs2-4-offset-x: 0px;
+$imgs2-4-offset-y: -658px;
+$imgs2-4-width: 494px;
+$imgs2-4-height: 658px;
+$imgs2-4-total-width: 1482px;
+$imgs2-4-total-height: 1316px;
+$imgs2-4-image: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png';
+$imgs2-4: (0px, 658px, 0px, -658px, 494px, 658px, 1482px, 1316px, 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', 'imgs2_4', );
+$spritesheet-width: 1482px;
+$spritesheet-height: 1316px;
+$spritesheet-image: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png';
+$spritesheet-sprites: ($imgs2-1, $imgs2-2, $imgs2-3, $imgs2-4, );
+$spritesheet: (1482px, 1316px, 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
