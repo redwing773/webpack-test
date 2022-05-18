@@ -1,4 +1,4 @@
-// webpack.config.js
+// webpack.config.dev.js
 // webpack 명령은 기본적으로 이 설정으로 시작
  
 const path = require('path');
@@ -8,9 +8,9 @@ const SpritesmithPlugin = require('webpack-spritesmith');
 const MobileSpritesmithPlugin = require('webpack-spritesmith');
  
 module.exports = {
-    // mode : 'development',
-    mode : 'production',
-    // devtool: "inline-source-map",
+    mode : 'development',
+    // mode : 'production',
+    devtool: "inline-source-map",
     // devtool: 'source-map',
     // 웹팩 v4부터는 mode 필수
     entry: {
@@ -51,23 +51,7 @@ module.exports = {
             // },
             {
                 test: /\.s[ac]ss$/,
-                use: [
-                  {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        // sourceMap: false,
-                    }
-                  }, 'css-loader',
-                  {
-                    loader: "sass-loader",
-                    options: {
-                        // sourceMap: true,
-                        sassOptions: {
-                            outputStyle: 'compressed',
-                        },
-                    },
-                  },
-                ],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 exclude: /node_modules/
             },
 

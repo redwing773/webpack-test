@@ -1,5 +1,4 @@
 // module1.js
- 
 import $ from 'jQuery';
 import Swiper from 'swiper';
 import '../css/swiper.css';

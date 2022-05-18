@@ -4,8 +4,9 @@
       <meta charset="UTF-8">
       <title>Webpack Test</title>
       <base href="/dist/">
-      <link rel="stylesheet" href="css/common.css">
-      <link rel="stylesheet" href="css/swiper.css">
+      <link rel="stylesheet" type="text/css" href="./css/common.css">
+      <link rel="stylesheet" type="text/css" href="./css/swiper.css">
+      <script src="./js/jquery.js"></script>
   </head>
   <body>
       <div id="header">
@@ -33,18 +34,10 @@
             <p>js/module2.js - module 추가용 swiper.js 로 합쳐져서 변환</p>
             <p>js/ui.js - 기본js ui.js로 변환</p>
           </section>
-          <div class="swiper">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide">1</div>
-                  <div class="swiper-slide">2</div>
-                  <div class="swiper-slide">3</div>
-              </div>
-          </div>
+          <a href="/html/main.html">main.html</a>
       </div>
-      <!-- <script src="./dist/js/bundle.js"></script> -->
-      <!-- <script src="./dist/js/test.js"></script> -->
-      <script src="js/common.js"></script>
-      <script src="js/swiper.js"></script>
-      <script src="js/ui.js"></script>
+      <script src="./js/swiper.js"></script>
+      <script src="./js/common.js"></script>
+      <script src="./js/ui.js"></script>
   </body>
 </html>

@@ -1,14 +1,18 @@
-@charset "utf-8";
+// @charset "utf-8";
+@import url('https://acaimg.etoos.com/common/font/notosanskr.css');
 /* common.scss */
 
 
 body {
-    color: blue;
+   font-family: 'Noto Sans Kr';
+   color: blue;
+   font-size: 14px;
     p{
       color: #222;
     }
     #container > p {
-       color: red;
+      font-size: 20px; 
+      color: red;
     }
     .swiper{
        margin-top:30px;
@@ -19,8 +23,8 @@ body {
 
  }
 
-// @import '../assets/spritesmith-generated/sprite1.scss';
-// .cont1_right1{@include sprite($cont1-right1);}
+@import '../assets/spritesmith-generated/sprite1.scss';
+.cont1_right1{@include sprite($cont1-right1);}
 
 @import '../assets/spritesmith-generated/sprite2.scss';
 .imgs2_1{@include sprite($imgs2-1);}

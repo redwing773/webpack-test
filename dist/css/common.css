@@ -1,25 +1,2 @@
-/*!**************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/common.scss ***!
-  \**************************************************************************************************************/
-/* common.scss */
-body {
-  color: blue;
-}
-body p {
-  color: #222;
-}
-body #container > p {
-  color: red;
-}
-body .swiper {
-  margin-top: 30px;
-  border: 1px solid #000;
-  text-align: center;
-}
-
-.imgs2_1 {
-  background-image: url(https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png);
-  background-position: 0px 0px;
-  width: 494px;
-  height: 658px;
-}
+@import url(https://acaimg.etoos.com/common/font/notosanskr.css);
+body{font-family:"Noto Sans Kr";color:blue;font-size:14px}body p{color:#222}body #container>p{font-size:20px;color:red}body .swiper{margin-top:30px;border:1px solid #000;text-align:center}.cont1_right1{background-image:url(https://acaimg.etoos.com/cs/pc/gate/images/cnt/recruit/bansu_2023/cont1_right_spr.png);background-position:0px 0px;width:494px;height:658px}.imgs2_1{background-image:url(https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png);background-position:0px 0px;width:494px;height:658px}

@@ -1,27 +1,29 @@
+gitlab  
 # 에듀클라우드TF 포털 구축 대비
-# webpack 세팅
+# webpack 세팅  
 
 ## 현재 구조
-- **html 작업은 dist폴더에서 작업**
-- **scss,js,image** (sprite 사용 시에만, 다른 이미지는 기존대로 S3로 업로드 예정)는 src폴더에서 작업 후 번들링(webpack 실행) 후 **dist폴더에 있는 파일이 개발/운영** 에 올라가야 함
-    sprite된 이미지도 s3에 올린 후 scss에서 주소 수정 필요
+- **html 폴더에서 html 작업**
+- **src 폴더에서 css,js, sprite images 작업**
+- **dist폴더(위 src의 작업물이 빌드됨)는 webpack으로 빌드된 파일들**
+- **sprite images는 빌드 후 생성된 이미지를 S3에 직접 올리고 후 이미지 주소 수정 필요**
 
-- 수정예정 사항 : 현재 dist에 spr된 이미지가 dist 바로 밑에 생성되고 있어 수정예정
+- known issue : jquery 플러그인이 jquery를 쓰는 모든 js파일에 추가됨
 
 ### 배포용(/dist/ - base url)
 **/dist/**  
-|-- html/main.html(메인 html)
-|-- html/header.html(헤더 html)
-|-- html/footer.html(푸터 html)
 |-- css/common.css - 기본 스타일  
 |-- css/swiper.css - swiper css  
 |-- js/common.js - 기본 js  
-|-- js/swiper.js - swiper 플러그인  
+|-- js/jquery.js - jquery 플러그인
+|-- js/swiper.js - swiper 플러그인
 |-- js/ui.js - init  
 
 ### 개발용(src폴더)  
 **/src/**  
-|-- css/base.css - index.js에서 호출하여 index.css로 변환  
+|-- assets/images - sprite 하기 위한 이미지들
+|-- assets/spritesmith-generated - 생성된 sprite 이미지 위치
+|-- css/common.css - index.js에서 호출하여 common.css로 변환  
 |-- css/swiper.css - module1.js에서 호출하여 swiper.css로 변환  
 |-- js/index.js - 기본js index.js로 변환  
 |-- js/module1.js - swiper module 호출 및 실행하며 swiper.js 로 변환  
@@ -33,7 +35,8 @@
 ---
 ## npm으로 세팅 방법
 0. **node.js 선 설치 필수**  
-1. git clone http://github.etoos.com/AE210208/webpack-test  
+1. git clone https://gitlab.etoos.com/AE210208/webpack-test
+
 2. clone 받은 위치 CLI에서 npm install  
 3. npm install이 완료되면 CLI에서 명령어 'webpack' 입력(build 역할)  
 **mac에서 npm install 등으로 설치 시 에러가 뜨면 대부분 권한 문제로 sudo 키워드를(관리자권한 - PC 비밀번호 입력 뜸) 맨 앞에 붙여서 실행**  
@@ -46,7 +49,7 @@
 | `windows` | vscode의 setting.json에서 "terminal.integrated.defaultProfile.windows" 를<br>"Git Bash"로 변경.(기본값은 'power shell') |
 
 4. build가 정상적으로 수행 되면 이후 명령어는 'npm run dev'로 빌드&서버실행 한번에 수행 - http://localhost:9000/  
-5. **서버  종료 시 CLI 에서 ctl + z 두번 입력** - 서버종료가 정상적으로 되지 않을 경우 활성포트가 남아있어 웹팩 서버 실행이 되지 않아 강제로 해당 포트 프로세스를 종료시켜야 함  
+5. **서버  종료 시 CLI 에서 cntl + c(또는 cnrl + z) 두번 입력** - 서버종료가 정상적으로 되지 않을 경우 활성포트가 남아있어 웹팩 서버 실행이 되지 않아 강제로 해당 포트 프로세스를 종료시켜야 함  
 <!-- |sudo npm i --save jquery  |
 |sudo npm i -D css-loader style-loader  |
 |sudo npm install --save-dev html-webpack-plugin  |
@@ -69,6 +72,5 @@
 
 ---
 ## CLI 입력 가능 명령
-- webpack : 빌드만 수행
-- npm run build : 위 webpack과 같음
-- npm run dev : webpack 과 webpack server 함께 실행하며 먼저 실행되는 webpack이 성공 시 다음 명령 수행(webpack 과정에서 에러가 발생하면 이후 서버실행은 진행하지 않음)
+- npm run dev : 개발 및 작업물 확인용 - 실행 시 개발용으로 빌드해 주며 프로세스가 끝나지 않고 상주하며 수정사항 발생 시 바로 빌드해서 반영해 준다. 또한 개발용 이라 css, js가 압축이 안되어 있어 디버깅에 용이
+- npm run prod : 배포용(개발 또는 운영에 넘기는 용도) - 실행 시 배포용으로 파일을 빌드해 준다(css,js가 압축됨)

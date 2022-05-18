@@ -1,6 +1,7 @@
 // ui.js
- 
 import $ from 'jQuery';
+ 
+// import $ from 'jQuery';
 (function () {
     $(document).ready(function() {
         
