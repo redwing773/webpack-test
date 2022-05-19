@@ -14,10 +14,35 @@ body {
       font-size: 20px; 
       color: red;
     }
-    .swiper{
-       margin-top:30px;
-       border:1px solid #000;
-       text-align:center;
+    .slidewrap {
+        margin-top: 30px;
+        width: 500px;
+        height: 200px;
+        overflow: hidden;
+        font-size: 20px;
+        color: #000;
+
+        .swiper {
+            border: 1px solid #000;
+            text-align: center;
+
+            .swiper-slide {
+                width: 500px;
+            }
+        }
+
+        .swiper2 {
+            .swiper-slide {
+                width: 100px;
+                height: 100px;
+                background: red;
+                opacity: .5;
+
+                &:nth-child(even) {
+                    background: blue;
+                }
+            }
+        }
     }
 
 

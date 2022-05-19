@@ -1,14 +1,9 @@
 // module1.js
-import $ from 'jQuery';
-import Swiper from 'swiper';
-import '../css/swiper.css';
 
-(function () {
-    $(document).ready(function() {
-        $('#container > p').text('jQuery 를 불러와 사용하고 있습니다.')
-         var swiper = new Swiper('.swiper', {
-          });
-    });
-})();
+// $('#container > p').text('jQuery 를 불러와 사용하고 있습니다.')
+//     var swiper22 = new Swiper('.swiper2', {
+//     });
 
-console.log('module1.js swiper 입니다');
+// ES6
+const pow = x => x * x;
+console.log(pow(10)); // 100

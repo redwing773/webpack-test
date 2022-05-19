@@ -1,6 +1,5 @@
-gitlab  
-# 에듀클라우드TF 포털 구축 대비
-# webpack 세팅  
+# gitlab  
+# 에듀클라우드TF 포털 구축 대비 webpack 적용 검토
 
 ## 현재 구조
 - **html 폴더에서 html 작업**
@@ -8,7 +7,9 @@ gitlab
 - **dist폴더(위 src의 작업물이 빌드됨)는 webpack으로 빌드된 파일들**
 - **sprite images는 빌드 후 생성된 이미지를 S3에 직접 올리고 후 이미지 주소 수정 필요**
 
-- known issue : jquery 플러그인이 jquery를 쓰는 모든 js파일에 추가됨
+- known issue
+    1. jquery 플러그인이 jquery를 쓰는 모든 js파일에 추가됨  
+    2. babel 동작
 
 ### 배포용(/dist/ - base url)
 **/dist/**  
@@ -60,6 +61,13 @@ gitlab
 
 **참고.**  
 - npm으로 설치 시 나타나는 '1 critical severity vulnerability' 이 메시지는 취약점 관련 메시지로 오류는 아니므로 일단은 무시
+
+---
+## 활용법(CLI 입력)
+- npm run dev : 개발 및 작업물 확인용 - 실행 시 개발용으로 빌드해 주며 프로세스가 끝나지 않고 상주하며 수정사항 발생 시 바로 빌드해서 반영해 준다. 또한 개발용 이라 css, js가 압축이 안되어 있어 디버깅에 용이
+- npm run prod : 배포용(개발 또는 운영에 넘기는 용도) - 실행 시 배포용으로 파일을 빌드해 준다(css,js가 압축됨)
+- /dist 폴더는 빌드할 떄마다 새로 생성되니 지워도 무방
+
 ---
 ## 이미지 sprite 사용법
 1. /src/assets/images/icons에 스프라이트 만들 이미지를 낱개로 넣음(경로 변경 가능 - 원본 이미지는 기존 이미지들과 이름 겹치지 않게 작명)
@@ -69,8 +77,3 @@ gitlab
 3. webpack.config.js 에서 관련 소스수정(new SpritesmithPlugin 부분, 별도 sprite 이미지를 작업하고 싶으면 해당 인스턴스 추가 생성)
 4. /src/assets/spritesmith-generated/ 폴더에 스프라이트 된 이미지를 이미지 서버에 업로드(EX> S3서버 같은)
 5. /dist 폴더에 자동생성되는 해쉬값 png파일은 무시(안 지우면 쌓일테니 지우는 걸 추천)
-
----
-## CLI 입력 가능 명령
-- npm run dev : 개발 및 작업물 확인용 - 실행 시 개발용으로 빌드해 주며 프로세스가 끝나지 않고 상주하며 수정사항 발생 시 바로 빌드해서 반영해 준다. 또한 개발용 이라 css, js가 압축이 안되어 있어 디버깅에 용이
-- npm run prod : 배포용(개발 또는 운영에 넘기는 용도) - 실행 시 배포용으로 파일을 빌드해 준다(css,js가 압축됨)

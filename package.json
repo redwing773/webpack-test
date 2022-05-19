@@ -1,41 +1,45 @@
 {
-    "name": "webpack-test",
-    "version": "1.0.0",
-    "description": "gitlab  # 에듀클라우드TF 포털 구축 대비 # webpack 세팅",
-    "main": "index.js",
-    "scripts": {
-        "build": "webpack",
-        "server": "webpack serve",
-        "dev": "webpack --watch --config webpack.config.dev.js",
-        "prod": "webpack --config webpack.config.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "MIT",
-    "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-loader": "^8.2.5",
-        "babel-preset-env": "^1.7.0",
-        "css-loader": "^6.7.1",
-        "file-loader": "^6.2.0",
-        "html-webpack-plugin": "^5.5.0",
-        "jquery": "^3.6.0",
-        "mini-css-extract-plugin": "^2.6.0",
-        "sass": "^1.51.0",
-        "sass-loader": "^12.6.0",
-        "style-loader": "^3.3.1",
-        "swiper": "^4.5.1",
-        "url-loader": "^4.1.1",
-        "webpack": "^5.72.0",
-        "webpack-cli": "^4.9.2",
-        "webpack-dev-server": "^4.8.1",
-        "webpack-spritesmith": "^1.1.0"
-    },
-    "dependencies": {
-        "swiper": "^4.5.1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://gitlab.etoos.com/AE210208/webpack-test"
-    }
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "gitlab  # 에듀클라우드TF 포털 구축 대비 # webpack 세팅",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "server": "webpack serve",
+    "dev": "rm -r dist/ | webpack --watch --config webpack.config.dev.js",
+    "prod": "rm -r dist/ | webpack --config webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "imports-loader": "^4.0.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "swiper": "^4.5.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1",
+    "webpack-spritesmith": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "swiper": "^4.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.etoos.com/AE210208/webpack-test"
+  }
 }

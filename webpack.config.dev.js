@@ -1,6 +1,7 @@
 // webpack.config.dev.js
 // webpack 명령은 기본적으로 이 설정으로 시작
- 
+
+const webpack = require('webpack');
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // node_modules 에서 불러옴
@@ -12,13 +13,13 @@ module.exports = {
     // mode : 'production',
     devtool: "inline-source-map",
     // devtool: 'source-map',
-    // 웹팩 v4부터는 mode 필수
     entry: {
         common : './src/js/common.js',
         ui : './src/js/ui.js',
-        swiper : ['./src/js/module1.js','./src/js/module2.js'], // 배열 사용
-        jquery : './src/js/jquery.js',
+        // module : ['./src/js/module1.js','./src/js/module2.js'], // 배열 사용
+        // newtest : './src/js/module2.js',
     },
+
     output: {
         path: path.resolve(__dirname,'dist'),//폴더가 없으면 만들기
         filename: 'js/[name].js',// 위에 지정한 entry 키의 이름에 맵핑되어 파일이 생성됨
@@ -87,16 +88,25 @@ module.exports = {
                 },
             },
             {
-                test: /\.(js)$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
+              test: /\.(js)$/,
+              loader: 'babel-loader',
             },
-            
-            
-
-
         ]
     },
+
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          default: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "lib",
+            chunks: "all",
+          },
+        }
+      },
+    },
+    
+
     plugins : [
         // new HtmlWebpackPlugin({ filename: 'html/[name].html' }),
 
@@ -116,6 +126,7 @@ module.exports = {
               cssImageRef: 'https://acaimg.etoos.com/cs/pc/gate/images/cnt/recruit/bansu_2023/cont1_right_spr.png',//참조될 위치와 파일명(ex>https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png)
             },
         }),
+
         new SpritesmithPlugin({ //다른 스프라이트 이미지 생성
           src: {
             cwd: path.resolve(__dirname,'src/assets/images/imgs2'),// 이미지 원본파일 위치
@@ -128,7 +139,12 @@ module.exports = {
           apiOptions: {
             cssImageRef: 'https://img.etoos.com/enp/front/main/web/images/sprites/sprite_common.png', //참조될 위치와 파일명(ex> s3 이미지 올리는 저장소에 올린 주소)
           },
-      }),
+        }),
+
+        new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery',
+        })
 
 
     ],
@@ -143,51 +159,3 @@ module.exports = {
 
 
 };
-
-
-
-// module.exports = {
-//     mode : 'development',
-//     // 웹팩 v4부터는 mode 필수
-//     // mode 는 production, development, none 3가지 옵션이 존재
-//     // mode 의 production 은 각 설정마다 내장된 최적화 옵션을 자동으로 설정하여 준다
-//     entry: {
-//         test : './src/js/test.js',
-//         // 'module.chunk' : ['./src/js/module1.js','./src/js/module2.js']
-//         // 배열 사용(오른쪽부터 왼쪽으로 읽어감)
-//     },
-//     output: {
-//         // filename 으로 생성된 번들링을 어느 경로에 생성할 지를 설정
-//         // __dirname 은 node 에서 제공하는 node 파일의 경로를 담고 있는 변수
-//         // __이 붙어 있는 변수들은 항상 무엇인가를 담고있는 특별한 변수들임
-//         // path 에는 절대 경로 설정(절대값으로 static(정적)으로 사용)
-//         path: path.resolve(__dirname,__dirname, 'dist/js'),
-         
-//         // bundling 된 결과 파일의 이름
-//         filename: '[name].js'
-//          // 위에 지정한 entry 키의 이름에 맵핑되어 파일이 생성됨
-//     }
-// };
-
-
-// webpack.config.js
- 
-// const webpack = require('webpack');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
- 
-// module.exports = {
-//     mode : 'development',
-//     entry : {
-//          app : './src/js/index.js',
-//     },
-//     output: {
-//         path: path.resolve(__dirname,__dirname, 'dist/js'),//폴더가 없으면 만들기
-//         filename: '[name].js',// 위에 지정한 entry 키의 이름에 맵핑되어 파일이 생성됨
-//     },
-//     plugins : [
-//          new HtmlWebpackPlugin(),
-//         //  new webpack.ProgressPlugin(),
-//         //  new webpack.optimize.UglifyJsPlugin()
-//          // ...
-//      ]
-// }
