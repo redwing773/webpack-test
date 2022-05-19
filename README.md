@@ -11,7 +11,7 @@
     1. jquery 플러그인이 jquery를 쓰는 모든 js파일에 추가됨  
     2. babel 동작
 
-### 배포용(/dist/ - base url)
+### 배포용
 **/dist/**  
 |-- css/common.css - 기본 스타일  
 |-- css/swiper.css - swiper css  
@@ -20,7 +20,7 @@
 |-- js/swiper.js - swiper 플러그인
 |-- js/ui.js - init  
 
-### 개발용(src폴더)  
+### 개발용
 **/src/**  
 |-- assets/images - sprite 하기 위한 이미지들
 |-- assets/spritesmith-generated - 생성된 sprite 이미지 위치
@@ -39,15 +39,16 @@
 1. git clone https://gitlab.etoos.com/AE210208/webpack-test
 
 2. clone 받은 위치 CLI에서 npm install  
-3. npm install이 완료되면 CLI에서 명령어 'webpack' 입력(build 역할)  
+3. npm install이 완료되면 CLI에서 명령어 'npm run dev' 입력(build 역할 및 수정 시 실시간 빌드)  
+4. 작업이 완료되면 npm run prod입력 -> /dist 폴더의 css/js 및 html파일을 깃에 업로드  
 **mac에서 npm install 등으로 설치 시 에러가 뜨면 대부분 권한 문제로 sudo 키워드를(관리자권한 - PC 비밀번호 입력 뜸) 맨 앞에 붙여서 실행**  
 
-| `구분` | npm install 이후 webpack 명령 실행시 에러 나오면 수행 |
+<!-- | `구분` | npm install 이후 webpack 명령 실행시 에러 나오면 수행 |
 |:---|:---|
 | `공통` | npm i webpack --global|
 | `공통` | npm i webpack webpack-cli -global|
 | `공통` | npm i webpack webpack-cli --save-dev|
-| `windows` | vscode의 setting.json에서 "terminal.integrated.defaultProfile.windows" 를<br>"Git Bash"로 변경.(기본값은 'power shell') |
+| `windows` | vscode의 setting.json에서 "terminal.integrated.defaultProfile.windows" 를<br>"Git Bash 또는 cmd"로 변경.(기본값은 'power shell') | -->
 
 4. build가 정상적으로 수행 되면 이후 명령어는 'npm run dev'로 빌드&서버실행 한번에 수행 - http://localhost:9000/  
 5. **서버  종료 시 CLI 에서 cntl + c(또는 cnrl + z) 두번 입력** - 서버종료가 정상적으로 되지 않을 경우 활성포트가 남아있어 웹팩 서버 실행이 되지 않아 강제로 해당 포트 프로세스를 종료시켜야 함  
